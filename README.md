@@ -10,8 +10,8 @@ Approach:
 - Joined `users_customuser` with `plans_plan` on user ID.
 - Filtered only plans with a positive amount.
 - Used conditional aggregation to: 
-      - Count distinct savings and investment plans.
-      - Calculate the total amount deposited across both types.
+  - Count distinct savings and investment plans.
+  - Calculate the total amount deposited across both types.
 - Used `HAVING` to ensure only users with at least one savings and one investment plan are included.
 - Ordered the result by total deposits in descending order.
 
@@ -36,8 +36,8 @@ Challenges:
 Question: Identify all savings or investment plans with their last inflow transaction dated between Jan 1, 2023, and Jan 31, 2024, where no further inflow has occurred within 365 days as of Jan 31, 2024.
 
 Approach:
--Step 1: Created a CTE `last_inflow` to find the most recent positive transaction (inflow) per plan.
-Step 2: Joined the inflow data with the `plans_plan` table to:
+- Step 1: Created a CTE `last_inflow` to find the most recent positive transaction (inflow) per plan.
+- Step 2: Joined the inflow data with the `plans_plan` table to:
      - Include only relevant plan types (Savings and Investment).
      - Filter for last inflows occurring between Jan 1, 2023, and Jan 31, 2024.
      - Calculate inactivity days using `DATEDIFF` from the reference date (`2024-01-31`).
